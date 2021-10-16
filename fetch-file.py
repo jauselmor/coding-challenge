@@ -37,16 +37,17 @@ for person in people:
       if k == 'type':
         if v == 'email':
          #print('send_email to:')
-         #print(person_items)
-         send_email('alguien@example.com', person_items)
+         #print(person_items[4])
+         send_email(person_items[4], person_items)
         elif v == 'post':
          #print('send_post to:')
-         #print(person_items)
-         send_post('http://holaholitahola.com', person_items)
+         #print(person_items[0])
+         send_post(person_items[0], person_items)
         elif v == 'sms':
          #print('send_sms to:')
+         #print(person_items[1])
          #print(person_items)
-         send_sms('12345', person_items)
+         send_sms(person_items[1], person_items)
         else:
          print('no valid send type:')
          #print(person_items)
