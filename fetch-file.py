@@ -23,7 +23,22 @@ people=(o for o in objects )
 for person in people:
  peopleNum=len(person)
  for i in range(peopleNum):
-  print(person[i])
+  #print(person[i])
+  person_items = person[i].items()
+  for k,v in person_items:
+      if k == 'type':
+        if v == 'email':
+         print('send_email to:')
+         print(person_items)
+        elif v == 'post':
+         print('send_post to:')
+         print(person_items)
+        elif v == 'sms':
+         print('send_sms to:')
+         print(person_items)
+        else:
+         print('no valid send type:')
+         print(person_items)
 
 
 #print(type(person))
