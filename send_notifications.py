@@ -71,14 +71,14 @@ for person in people:
   for k,v in person_items:
       if k == 'type':
         if v == 'email':
-         precheck_send_email(email, name)
-         send_email(email, person_items)
+         if precheck_send_email(email, name):
+            send_email(email, person_items)
         elif v == 'post':
-         precheck_send_post(url, name)
-         send_post(url, person_items)
+         if precheck_send_post(url, name):
+            send_post(url, person_items)
         elif v == 'sms':
-         precheck_send_sms(phone, name)
-         send_sms(person_items[1][1], person_items)
+         if precheck_send_sms(phone, name):
+            send_sms(person_items[1][1], person_items)
         else:
          print('no valid send type:')
          #print(person_items)
