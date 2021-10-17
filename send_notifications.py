@@ -12,15 +12,23 @@ import urllib
 from urllib import urlopen
 import ijson
 from validators import email_validator, url_validator, phone_validator
+import logging
+from time import time, sleep
+
+
+
 
 # def send_sms(phone: str, data: dict) -> None:
 def send_sms(phone, data):
+    sleep(0.3) #To simulate delay in function
     print("SMS sent to " + str(phone) , ". Data:", data)
 #def send_email(email: str, data: dict) -> None:
 def send_email(email, data):
+    sleep(0.1) #To simulate delay in function
     print("EMAIL sent to " + str(email),". Data:", data)
 #def send_post(url: str, data: dict) -> None:
 def send_post(url, data):
+    sleep(0.2) #To simulate delay in function
     print("POST sent to " + str(url),". Data:", data)
 
 def precheck_send_sms(phone, name):
@@ -51,10 +59,11 @@ def precheck_send_post(url, name):
     else:
         return url_validator(url)
 
-
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+ts = time()
 
 url1='https://raw.githubusercontent.com/UN-ICC/notifications-processor/master/notifications_log.json'
-
 response1=urlopen(url1).read()
 
 objects=ijson.items(response1,'')
@@ -73,15 +82,21 @@ for person in people:
         if v == 'email':
          if precheck_send_email(email, name):
             send_email(email, person_items)
+         else:
+            logger.error(person_items)
         elif v == 'post':
          if precheck_send_post(url, name):
             send_post(url, person_items)
+         else:
+            logger.error(person_items)
         elif v == 'sms':
          if precheck_send_sms(phone, name):
             send_sms(person_items[1][1], person_items)
+         else:
+             logger.error(person_items)
         else:
          print('no valid send type:')
          #print(person_items)
 
-
+logging.info('Took %s seconds', time() - ts)
 #print(type(person))

@@ -30,7 +30,7 @@ def email_validator(email):
         return False
 def phone_validator(phone):
 ## Too much simple but according the data provided, there are many formats of phone numbers in the list and I think is not required to lose too much time on it.
-    if phone != '':
+    if phone != None:
       return True
     else:
       return False
