@@ -2,7 +2,7 @@
 
 ######
 # Usage:
-#       ./fetch-file.py
+#       ./send_notifications.py
 #
 ######
 
@@ -21,6 +21,26 @@ def send_email(email, data):
 #def send_post(url: str, data: dict) -> None:
 def send_post(url, data):
     print("POST sent to " + str(url),". Data:", data)
+
+def precheck_send_sms(phone, name, data):
+    # Check if:
+    # - mandatory parameters are present (name, phone)
+    # - phone is present and format is correct.
+    print("SMS sent to " + str(phone) , ". Data:", data)
+
+def precheck_send_email(email, name, data):
+    # Check if:
+    # - mandatory parameters are present (name, email)
+    # - email is present and format is correct.
+    #print("EMAIL sent to " + str(email),". Data:", data)
+    EMAIL_REGEX = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    return re.fullmatch(EMAIL_REGEX, email)
+def precheck_send_post(url, name, data):
+    # Check if:
+    # - mandatory parameters are present (name, url)
+    # - url is present and format is correct.
+    print("SMS sent to " + str(phone) , ". Data:", data)
+
 
 url1='https://raw.githubusercontent.com/UN-ICC/notifications-processor/master/notifications_log.json'
 
