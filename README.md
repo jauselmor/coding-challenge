@@ -31,11 +31,13 @@ python send_notifications.py
 - Relevant third party libraries: Used ijson to manage big json data files.
 - Commits documented to see how the code evolve: until now 17 commits. 
 - No coding patters used, no enough experience in that field, but tried to create appropriate functions to help to read the code. Main script [send_notifications.py](./send_notifications.py) has less than 100 hundred lines. 
-- Logging. Line with message of ERROR if message can't be send because data is wrong or missing, and line with message indicating the action:
+- Logging. Line with message of ERROR if message can't be sent because data is wrong or missing, and line with message indicating the action:
 Example:
 ````
 ('EMAIL sent to christopher93@example.net', '. Data:', [(u'url', u'http://fernandez.info/'), (u'phone', u'+1-152-084-6860x0958'), (u'type', u'email'), (u'name', u'Jasmine Anderson'), (u'email', u'christopher93@example.net')])
 2021-10-18 00:29:54,564 - __main__ - ERROR - [(u'url', None), (u'phone', None), (u'type', u'post'), (u'name', u'Matthew Schwartz'), (u'email', u'geoffrey45@example.net')]
-
+````
+### EOF
+Thank you! :-)
 
  
